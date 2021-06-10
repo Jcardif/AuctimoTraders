@@ -12,7 +12,7 @@ namespace AuctimoTraders.Helpers
         PreferNotToSay
     }
 
-    public enum UserRoles
+    public enum UserRole
     {
         SalesPerson,
         CountryManager,
