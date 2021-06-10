@@ -4,5 +4,110 @@
         <name>AuctimoTraders</name>
     </assembly>
     <members>
+        <member name="T:AuctimoTraders.Helpers.BaseModel">
+            <inheritdoc />
+        </member>
+        <member name="M:AuctimoTraders.Helpers.BaseModel.#ctor">
+            <summary>
+                Initialise the default values for
+                <see cref="P:AuctimoTraders.Helpers.BaseModel.CreatedAt"/> <see cref="P:AuctimoTraders.Helpers.BaseModel.UpdatedAt"/>
+                and <see cref="P:AuctimoTraders.Helpers.BaseModel.DeletedAt"/>
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.BaseModel.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:AuctimoTraders.Helpers.BaseModel.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:AuctimoTraders.Helpers.BaseModel.DeletedAt">
+            <inheritdoc />
+        </member>
+        <member name="T:AuctimoTraders.Helpers.Extensions">
+            <summary>
+                Class that holds extension methods for the Application
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Helpers.Extensions.GetUtcDateTime(System.DateTime)">
+            <summary>
+                Convert the provided date to UTC <see cref="T:System.DateTime"/>
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AuctimoTraders.Interfaces.IBaseModel">
+            <summary>
+                Base model inherited across all models
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Interfaces.IBaseModel.CreatedAt">
+            <summary>
+                Time the recorded was created in the database
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Interfaces.IBaseModel.UpdatedAt">
+            <summary>
+                Time the record was updated in the database
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Interfaces.IBaseModel.DeletedAt">
+            <summary>
+                To help in soft deletion, indicates time a record was deleted in the database
+            </summary>
+        </member>
+        <member name="T:AuctimoTraders.Models.AppUser">
+            <inheritdoc cref="T:Microsoft.AspNetCore.Identity.IdentityUser" />
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.FirstName">
+            <summary>
+                Gets or set the first name of a user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.LastName">
+            <summary>
+                Gets or sets the last name of the user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.Gender">
+            <summary>
+                Gets or Sets the Gender of the User
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.DOB">
+            <summary>
+                Gets or Sets the date of birth of the User
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.Weight">
+            <summary>
+                Gets or sets the weight of the user in Kgs
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.Salary">
+            <summary>
+                Gets or sets the current salary of the user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.JoiningYear">
+            <summary>
+                Gets or sets the year the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.DeletedAt">
+            <inheritdoc />
+        </member>
+        <member name="M:AuctimoTraders.Models.AppUser.#ctor">
+            <summary>
+                Initialise the default values for
+                <see cref="P:AuctimoTraders.Models.AppUser.CreatedAt"/> <see cref="P:AuctimoTraders.Models.AppUser.UpdatedAt"/>
+                and <see cref="P:AuctimoTraders.Models.AppUser.DeletedAt"/>
+            </summary>
+        </member>
     </members>
 </doc>
