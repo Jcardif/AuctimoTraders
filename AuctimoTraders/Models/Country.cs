@@ -29,7 +29,7 @@ namespace AuctimoTraders.Models
         public Guid CountryManagerId { get; set; }
 
         [ForeignKey(nameof(Region))]
-        public Guid RegionId { get; set; }
+        public Guid? RegionId { get; set; }
 
         [JsonIgnore]
         public virtual AppUser AppUser { get; set; }

@@ -4,6 +4,73 @@
         <name>AuctimoTraders</name>
     </assembly>
     <members>
+        <member name="T:AuctimoTraders.Data.AppDbContext">
+            <summary>
+                Represents the Database structure with the DbSet properties representing the tables
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Data.AppDbContext.Countries">
+            <summary>
+                Represents the Country Table defined by <see cref="T:AuctimoTraders.Models.Country"/>
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Data.AppDbContext.ItemTypes">
+            <summary>
+                Represents the ItemTypes Table defined by <see cref="T:AuctimoTraders.Models.ItemType"/>
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Data.AppDbContext.Regions">
+            <summary>
+                Represents the Regions Table defined by <see cref="T:AuctimoTraders.Models.Region"/>
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Data.AppDbContext.Sales">
+            <summary>
+                Represents the Sales Table defined by <see cref="T:AuctimoTraders.Models.Sale"/>
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Data.AppDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{AuctimoTraders.Data.AppDbContext})">
+            <summary>
+                Constructor
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:AuctimoTraders.Data.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AuctimoTraders.Helpers.APIResponseMessage">
+            <summary>
+                Default API response model for a request made to the api
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Helpers.APIResponseMessage.#ctor(System.String,System.String[],System.Net.HttpStatusCode)">
+            <summary>
+                Constructor
+            </summary>
+            <param name="message"></param>
+            <param name="errors"></param>
+            <param name="statusCode"></param>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.Message">
+            <summary>
+                Response message
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.Errors">
+            <summary>
+                Errors that occurred when executing the response
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.StatusCode">
+            <summary>
+                <see cref="T:System.Net.HttpStatusCode"/>
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.Result">
+            <summary>
+                Result returned for the query
+            </summary>
+        </member>
         <member name="T:AuctimoTraders.Helpers.BaseModel">
             <inheritdoc />
         </member>
@@ -35,6 +102,101 @@
             <param name="date"></param>
             <returns></returns>
         </member>
+        <member name="M:AuctimoTraders.Helpers.Extensions.ToErrorStrings(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IdentityError})">
+            <summary>
+                Convert a list of <see cref="T:Microsoft.AspNetCore.Identity.IdentityError"/> to a string of the error code and error description
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AuctimoTraders.Helpers.UserDTO">
+            <summary>
+                Represents User Data in the database
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.PhoneNumber">
+            <summary>
+            Gets or sets a telephone number for the user.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.Email">
+            <summary>
+            Gets or sets the email address for this user.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.FirstName">
+            <summary>
+                Gets or set the first name of a user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.LastName">
+            <summary>
+                Gets or sets the last name of the user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.Gender">
+            <summary>
+                Gets or Sets the Gender of the User
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.DOB">
+            <summary>
+                Gets or Sets the date of birth of the User
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.Weight">
+            <summary>
+                Gets or sets the weight of the user in Kgs
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.Salary">
+            <summary>
+                Gets or sets the current salary of the user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningYear">
+            <summary>
+                Gets or sets the year the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningMonth">
+            <summary>
+                Gets or sets the month the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningDay">
+            <summary>
+                Gets or sets the day the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningQuarter">
+            <summary>
+                Gets or sets the quarter the user joined the company
+            </summary>
+        </member>
+        <member name="T:AuctimoTraders.Interfaces.IAppRoleService">
+            <summary>
+                Interface contains tasks to handle different Role operations
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Interfaces.IAppRoleService.CreateRolesAsync">
+            <summary>
+                Create roles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AuctimoTraders.Interfaces.IAppUserService">
+            <summary>
+                Interface contains tasks to handle different AppUser operations
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Interfaces.IAppUserService.RegisterUserAsync(AuctimoTraders.Helpers.UserDTO,AuctimoTraders.Helpers.UserRole)">
+            <summary>
+                Register a new user to the system
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
         <member name="T:AuctimoTraders.Interfaces.IBaseModel">
             <summary>
                 Base model inherited across all models
@@ -53,6 +215,25 @@
         <member name="P:AuctimoTraders.Interfaces.IBaseModel.DeletedAt">
             <summary>
                 To help in soft deletion, indicates time a record was deleted in the database
+            </summary>
+        </member>
+        <member name="T:AuctimoTraders.Models.AppRole">
+            <inheritdoc cref="T:Microsoft.AspNetCore.Identity.IdentityRole`1" />
+        </member>
+        <member name="P:AuctimoTraders.Models.AppRole.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:AuctimoTraders.Models.AppRole.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:AuctimoTraders.Models.AppRole.DeletedAt">
+            <inheritdoc />
+        </member>
+        <member name="M:AuctimoTraders.Models.AppRole.#ctor">
+            <summary>
+                Initialise the default values for
+                <see cref="P:AuctimoTraders.Models.AppRole.CreatedAt"/> <see cref="P:AuctimoTraders.Models.AppRole.UpdatedAt"/>
+                and <see cref="P:AuctimoTraders.Models.AppRole.DeletedAt"/>
             </summary>
         </member>
         <member name="T:AuctimoTraders.Models.AppUser">
@@ -93,6 +274,21 @@
                 Gets or sets the year the user joined the company
             </summary>
         </member>
+        <member name="P:AuctimoTraders.Models.AppUser.JoiningMonth">
+            <summary>
+                Gets or sets the month the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.JoiningDay">
+            <summary>
+                Gets or sets the day the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.JoiningQuarter">
+            <summary>
+                Gets or sets the quarter the user joined the company
+            </summary>
+        </member>
         <member name="P:AuctimoTraders.Models.AppUser.CreatedAt">
             <inheritdoc />
         </member>
@@ -108,6 +304,126 @@
                 <see cref="P:AuctimoTraders.Models.AppUser.CreatedAt"/> <see cref="P:AuctimoTraders.Models.AppUser.UpdatedAt"/>
                 and <see cref="P:AuctimoTraders.Models.AppUser.DeletedAt"/>
             </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Country.Id">
+            <summary>
+                Gets or sets the primary key for the organization.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Country.CountryName">
+            <summary>
+                Gets or sets the name of the country
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Country.CountryManagerId">
+            <summary>
+                Gets or sets the Id of the Country Manager which is a foreign key to the <see cref="P:AuctimoTraders.Models.Country.AppUser"/> table
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.ItemType.Id">
+            <summary>
+                Gets or sets the primary key for the organization.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.ItemType.Name">
+            <summary>
+                Gets or sets the name of the Item Type
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.ItemType.UnitPrice">
+            <summary>
+                Gets or sets the Unit price of the Item Type
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Region.Id">
+            <summary>
+                Gets or sets the primary key for the organization.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Region.RegionName">
+            <summary>
+                Gets or sets the name of the region
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Region.RegionManagerId">
+            <summary>
+                Gets or sets the Id of the Regional Manager which is a foreign key to the <see cref="P:AuctimoTraders.Models.Region.AppUser"/> table
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.Id">
+            <summary>
+                Gets or sets the primary key for the organization.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.ItemTypeId">
+            <summary>
+                Gets or set the ItemTypeId which is a foreign key
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.CountryId">
+            <summary>
+                Gets or set the CountryId which is a foreign key
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.SalesChannel">
+            <summary>
+                Gets or sets the sales channel of the sale
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.OrderDate">
+            <summary>
+                Gets or sets the date when the order was placed
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.OrderId">
+            <summary>
+                Unique Identifier of the Order
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.ShipDate">
+            <summary>
+                Gets or sets the date when the order is shipped
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.UnitsSold">
+            <summary>
+                Gets or Sets the number of units sold in this particular sale
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.UnitCost">
+            <summary>
+                Gets or Sets the cost at which each unit was sold
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.Sale.SalesPersonId">
+            <summary>
+                Gets or sets the Id of the salesman who executed the sale
+            </summary>
+        </member>
+        <member name="T:AuctimoTraders.Services.AppRoleService">
+            <summary>
+                An implementation of the IAppRoleService
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Services.AppRoleService.#ctor(Microsoft.AspNetCore.Identity.RoleManager{AuctimoTraders.Models.AppRole})">
+            <summary>
+                Constructor
+            </summary>
+            <param name="roleManager"></param>
+        </member>
+        <member name="M:AuctimoTraders.Services.AppRoleService.CreateRolesAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:AuctimoTraders.Services.AppUserService">
+            <inheritdoc />
+        </member>
+        <member name="M:AuctimoTraders.Services.AppUserService.#ctor(Microsoft.AspNetCore.Identity.UserManager{AuctimoTraders.Models.AppUser},AuctimoTraders.Interfaces.IAppRoleService)">
+            <summary>
+                Constructor
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Services.AppUserService.RegisterUserAsync(AuctimoTraders.Helpers.UserDTO,AuctimoTraders.Helpers.UserRole)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

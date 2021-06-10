@@ -26,7 +26,7 @@ namespace AuctimoTraders.Models
         ///     Gets or set the CountryId which is a foreign key
         /// </summary>
         [ForeignKey(nameof(Country))]
-        public Guid CountryId { get; set; }
+        public Guid? CountryId { get; set; }
 
         /// <summary>
         ///     Gets or sets the sales channel of the sale

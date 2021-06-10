@@ -66,11 +66,16 @@ namespace AuctimoTraders.Helpers
         /// </summary>
         public int JoiningDay { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the quarter the user joined the company
+        /// </summary>
+        public Quarter JoiningQuarter { get; set; }
+
         public Guid Id { get; set; }
 
         public UserDTO(Guid id, string email, string firstName, string lastName, string phoneNumber, Gender gender,
             DateTime dob, double weight, float salary, int joiningDay, int joiningMonth, int joiningYear,
-            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt)
+            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, Quarter joiningQuarter)
         {
             Id = id;
             Email = email;
@@ -87,6 +92,7 @@ namespace AuctimoTraders.Helpers
             CreatedAt = createdAt;
             DeletedAt = deletedAt;
             UpdatedAt = updatedAt;
+            JoiningQuarter = joiningQuarter;
         }
 
         public DateTime UpdatedAt { get; set; }

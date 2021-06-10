@@ -14,6 +14,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using AuctimoTraders.Data;
+using AuctimoTraders.Interfaces;
+using AuctimoTraders.Models;
+using AuctimoTraders.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Logging;
 using static System.String;
 
 namespace AuctimoTraders
@@ -30,8 +37,23 @@ namespace AuctimoTraders
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
 
-            services.AddControllers();
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                //options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection"));
+            });
+
+            services.AddIdentity<AppUser, AppRole>(options =>
+                {
+                    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+'";
+                })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<IAppRoleService, AppRoleService>();
+            services.AddScoped<IAppUserService, AppUserService>();
 
             services.AddControllers()
                 .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));

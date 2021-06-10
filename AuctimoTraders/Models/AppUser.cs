@@ -57,6 +57,11 @@ namespace AuctimoTraders.Models
         /// </summary>
         public int JoiningDay { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the quarter the user joined the company
+        /// </summary>
+        public Quarter JoiningQuarter { get; set; }
+
         /// <inheritdoc />
         public DateTime CreatedAt { get; set; }
 

@@ -63,7 +63,7 @@ namespace AuctimoTraders.Services
 
             return new UserDTO(appUser.Id, appUser.Email, appUser.FirstName, appUser.LastName, appUser.PhoneNumber, appUser.Gender,
                 appUser.DOB, appUser.Weight, appUser.Salary, appUser.JoiningDay, appUser.JoiningMonth,
-                appUser.JoiningYear, appUser.CreatedAt, appUser.DeletedAt, appUser.UpdatedAt);
+                appUser.JoiningYear, appUser.CreatedAt, appUser.DeletedAt, appUser.UpdatedAt, appUser.JoiningQuarter);
         }
     }
 }
