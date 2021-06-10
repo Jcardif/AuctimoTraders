@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AuctimoTraders.Helpers;
 using AuctimoTraders.Interfaces;
+using AuctimoTraders.Shared.Helpers;
+using AuctimoTraders.Shared.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace AuctimoTraders.Models

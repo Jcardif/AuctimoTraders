@@ -1,5 +1,7 @@
 ﻿using System;
 using AuctimoTraders.Interfaces;
+using AuctimoTraders.Shared.Helpers;
+using AuctimoTraders.Shared.Models;
 
 namespace AuctimoTraders.Helpers
 {

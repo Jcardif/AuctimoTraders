@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuctimoTraders.Helpers
+namespace AuctimoTraders.Shared.Helpers
 {
     public enum Gender
     {
-        Male,
-        Female,
-        PreferNotToSay
+        M,
+        F
     }
 
     public enum UserRole
@@ -31,5 +30,10 @@ namespace AuctimoTraders.Helpers
         Q2,
         Q3,
         Q4
+    }
+
+    public enum OrderPriority
+    {
+        C,H,L,M
     }
 }

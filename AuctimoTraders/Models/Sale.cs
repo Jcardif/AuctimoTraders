@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AuctimoTraders.Helpers;
+using AuctimoTraders.Shared.Helpers;
+using AuctimoTraders.Shared.Models;
 
 namespace AuctimoTraders.Models
 {
@@ -57,6 +59,8 @@ namespace AuctimoTraders.Models
         ///     Gets or Sets the cost at which each unit was sold
         /// </summary>
         public float UnitCost { get; set; }
+
+        public OrderPriority OrderPriority { get; set; }
 
         /// <summary>
         ///     Gets or sets the Id of the salesman who executed the sale

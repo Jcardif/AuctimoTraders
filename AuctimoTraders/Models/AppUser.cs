@@ -5,6 +5,8 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AuctimoTraders.Helpers;
 using AuctimoTraders.Interfaces;
+using AuctimoTraders.Shared.Helpers;
+using AuctimoTraders.Shared.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace AuctimoTraders.Models
@@ -12,6 +14,8 @@ namespace AuctimoTraders.Models
     /// <inheritdoc cref="IdentityUser" />
     public class AppUser : IdentityUser<Guid>, IBaseModel
     {
+        public int Serial { get; set; }
+
         /// <summary>
         ///     Gets or set the first name of a user
         /// </summary>

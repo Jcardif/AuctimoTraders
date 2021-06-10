@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AuctimoTraders.Shared.Helpers;
 
-namespace AuctimoTraders.Helpers
+namespace AuctimoTraders.Shared.Models
 {
     /// <summary>
     ///     Represents User Data in the database
     /// </summary>
     public class UserDTO
     {
+        public int Serial { get; set; }
+
+        public string ManagerialRoleAssignment { get; set; }
+
         /// <summary>
         /// Gets or sets a telephone number for the user.
         /// </summary>
@@ -71,11 +76,13 @@ namespace AuctimoTraders.Helpers
         /// </summary>
         public Quarter JoiningQuarter { get; set; }
 
+
+
         public Guid Id { get; set; }
 
         public UserDTO(Guid id, string email, string firstName, string lastName, string phoneNumber, Gender gender,
             DateTime dob, double weight, float salary, int joiningDay, int joiningMonth, int joiningYear,
-            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, Quarter joiningQuarter)
+            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, Quarter joiningQuarter, int serial)
         {
             Id = id;
             Email = email;
@@ -93,6 +100,7 @@ namespace AuctimoTraders.Helpers
             DeletedAt = deletedAt;
             UpdatedAt = updatedAt;
             JoiningQuarter = joiningQuarter;
+            Serial = serial;
         }
 
         public DateTime UpdatedAt { get; set; }

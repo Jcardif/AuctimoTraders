@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctimoTraders", "AuctimoTraders\AuctimoTraders.csproj", "{D8C64144-0D4D-4D6D-AD81-F37C749E226C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuctimoTraders", "AuctimoTraders\AuctimoTraders.csproj", "{D8C64144-0D4D-4D6D-AD81-F37C749E226C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AuctimoTraders.Shared", "AuctimoTraders.Shared\AuctimoTraders.Shared.shproj", "{CD7FAF2A-BCE1-4567-B6AD-6CCE03796A08}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AuctimoTraders.Shared\AuctimoTraders.Shared.projitems*{cd7faf2a-bce1-4567-b6ad-6cce03796a08}*SharedItemsImports = 13
+		AuctimoTraders.Shared\AuctimoTraders.Shared.projitems*{d8c64144-0d4d-4d6d-ad81-f37c749e226c}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

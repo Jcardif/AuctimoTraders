@@ -13,11 +13,12 @@ namespace AuctimoTraders.Helpers
         /// <param name="message"></param>
         /// <param name="errors"></param>
         /// <param name="statusCode"></param>
-        public APIResponseMessage(string message, string[] errors, HttpStatusCode statusCode)
+        public APIResponseMessage(string message, string[] errors, HttpStatusCode statusCode, object result=null)
         {
             Message = message;
             Errors = errors;
             StatusCode = statusCode;
+            Result = result;
         }
 
         /// <summary>

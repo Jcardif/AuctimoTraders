@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AuctimoTraders.Helpers;
+using AuctimoTraders.Shared.Helpers;
+using AuctimoTraders.Shared.Models;
 
 namespace AuctimoTraders.Interfaces
 {
@@ -16,6 +18,6 @@ namespace AuctimoTraders.Interfaces
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        Task<object> RegisterUserAsync(UserDTO user, UserRole role);
+        Task<APIResponseMessage> RegisterUserAsync(UserDTO user, UserRole role);
     }
 }

@@ -43,7 +43,7 @@
                 Default API response model for a request made to the api
             </summary>
         </member>
-        <member name="M:AuctimoTraders.Helpers.APIResponseMessage.#ctor(System.String,System.String[],System.Net.HttpStatusCode)">
+        <member name="M:AuctimoTraders.Helpers.APIResponseMessage.#ctor(System.String,System.String[],System.Net.HttpStatusCode,System.Object)">
             <summary>
                 Constructor
             </summary>
@@ -90,90 +90,6 @@
         <member name="P:AuctimoTraders.Helpers.BaseModel.DeletedAt">
             <inheritdoc />
         </member>
-        <member name="T:AuctimoTraders.Helpers.Extensions">
-            <summary>
-                Class that holds extension methods for the Application
-            </summary>
-        </member>
-        <member name="M:AuctimoTraders.Helpers.Extensions.GetUtcDateTime(System.DateTime)">
-            <summary>
-                Convert the provided date to UTC <see cref="T:System.DateTime"/>
-            </summary>
-            <param name="date"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AuctimoTraders.Helpers.Extensions.ToErrorStrings(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IdentityError})">
-            <summary>
-                Convert a list of <see cref="T:Microsoft.AspNetCore.Identity.IdentityError"/> to a string of the error code and error description
-            </summary>
-            <param name="source"></param>
-            <returns></returns>
-        </member>
-        <member name="T:AuctimoTraders.Helpers.UserDTO">
-            <summary>
-                Represents User Data in the database
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.PhoneNumber">
-            <summary>
-            Gets or sets a telephone number for the user.
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.Email">
-            <summary>
-            Gets or sets the email address for this user.
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.FirstName">
-            <summary>
-                Gets or set the first name of a user
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.LastName">
-            <summary>
-                Gets or sets the last name of the user
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.Gender">
-            <summary>
-                Gets or Sets the Gender of the User
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.DOB">
-            <summary>
-                Gets or Sets the date of birth of the User
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.Weight">
-            <summary>
-                Gets or sets the weight of the user in Kgs
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.Salary">
-            <summary>
-                Gets or sets the current salary of the user
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningYear">
-            <summary>
-                Gets or sets the year the user joined the company
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningMonth">
-            <summary>
-                Gets or sets the month the user joined the company
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningDay">
-            <summary>
-                Gets or sets the day the user joined the company
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.UserDTO.JoiningQuarter">
-            <summary>
-                Gets or sets the quarter the user joined the company
-            </summary>
-        </member>
         <member name="T:AuctimoTraders.Interfaces.IAppRoleService">
             <summary>
                 Interface contains tasks to handle different Role operations
@@ -190,7 +106,7 @@
                 Interface contains tasks to handle different AppUser operations
             </summary>
         </member>
-        <member name="M:AuctimoTraders.Interfaces.IAppUserService.RegisterUserAsync(AuctimoTraders.Helpers.UserDTO,AuctimoTraders.Helpers.UserRole)">
+        <member name="M:AuctimoTraders.Interfaces.IAppUserService.RegisterUserAsync(AuctimoTraders.Shared.Models.UserDTO,AuctimoTraders.Shared.Helpers.UserRole)">
             <summary>
                 Register a new user to the system
             </summary>
@@ -422,8 +338,99 @@
                 Constructor
             </summary>
         </member>
-        <member name="M:AuctimoTraders.Services.AppUserService.RegisterUserAsync(AuctimoTraders.Helpers.UserDTO,AuctimoTraders.Helpers.UserRole)">
+        <member name="M:AuctimoTraders.Services.AppUserService.RegisterUserAsync(AuctimoTraders.Shared.Models.UserDTO,AuctimoTraders.Shared.Helpers.UserRole)">
             <inheritdoc />
+        </member>
+        <member name="T:AuctimoTraders.Shared.Helpers.Extensions">
+            <summary>
+                Class that holds extension methods for the Application
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Shared.Helpers.Extensions.GetUtcDateTime(System.DateTime)">
+            <summary>
+                Convert the provided date to UTC <see cref="T:System.DateTime"/>
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AuctimoTraders.Shared.Helpers.Extensions.ToErrorStrings(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IdentityError})">
+            <summary>
+                Convert a list of <see cref="T:Microsoft.AspNetCore.Identity.IdentityError"/> to a string of the error code and error description
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AuctimoTraders.Shared.Helpers.Extensions.ToUserDTO(AuctimoTraders.Models.AppUser)">
+            <summary>
+                Create a <see cref="T:AuctimoTraders.Shared.Models.UserDTO"/> object from an <see cref="T:AuctimoTraders.Models.AppUser"/> object
+            </summary>
+            <param name="appUser"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AuctimoTraders.Shared.Models.UserDTO">
+            <summary>
+                Represents User Data in the database
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.PhoneNumber">
+            <summary>
+            Gets or sets a telephone number for the user.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.Email">
+            <summary>
+            Gets or sets the email address for this user.
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.FirstName">
+            <summary>
+                Gets or set the first name of a user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.LastName">
+            <summary>
+                Gets or sets the last name of the user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.Gender">
+            <summary>
+                Gets or Sets the Gender of the User
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.DOB">
+            <summary>
+                Gets or Sets the date of birth of the User
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.Weight">
+            <summary>
+                Gets or sets the weight of the user in Kgs
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.Salary">
+            <summary>
+                Gets or sets the current salary of the user
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.JoiningYear">
+            <summary>
+                Gets or sets the year the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.JoiningMonth">
+            <summary>
+                Gets or sets the month the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.JoiningDay">
+            <summary>
+                Gets or sets the day the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.JoiningQuarter">
+            <summary>
+                Gets or sets the quarter the user joined the company
+            </summary>
         </member>
     </members>
 </doc>

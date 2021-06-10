@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using AuctimoTraders.Helpers;
 using AuctimoTraders.Interfaces;
 using AuctimoTraders.Models;
+using AuctimoTraders.Shared.Helpers;
+using AuctimoTraders.Shared.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace AuctimoTraders.Services
@@ -26,7 +28,7 @@ namespace AuctimoTraders.Services
         }
         
         /// <inheritdoc />
-        public async Task<object> RegisterUserAsync(UserDTO user, UserRole role)
+        public async Task<APIResponseMessage> RegisterUserAsync(UserDTO user, UserRole role)
         {
             var appUser = await _userManager.FindByEmailAsync(user.Email);
             if (appUser != null)
@@ -47,6 +49,7 @@ namespace AuctimoTraders.Services
                 JoiningMonth = user.JoiningMonth,
                 JoiningYear = user.JoiningYear,
                 UserName = user.Email,
+                Serial = user.Serial
             };
 
             var result = await _userManager.CreateAsync(appUser);
@@ -61,9 +64,7 @@ namespace AuctimoTraders.Services
                 return new APIResponseMessage("Unable to add user to specified role", result.Errors.ToErrorStrings(),
                     HttpStatusCode.BadRequest);
 
-            return new UserDTO(appUser.Id, appUser.Email, appUser.FirstName, appUser.LastName, appUser.PhoneNumber, appUser.Gender,
-                appUser.DOB, appUser.Weight, appUser.Salary, appUser.JoiningDay, appUser.JoiningMonth,
-                appUser.JoiningYear, appUser.CreatedAt, appUser.DeletedAt, appUser.UpdatedAt, appUser.JoiningQuarter);
+            return new APIResponseMessage("Successfully created user", null, HttpStatusCode.Created, appUser.ToUserDTO());
         }
     }
 }
