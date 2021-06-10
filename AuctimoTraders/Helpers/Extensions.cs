@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AuctimoTraders.Models;
 using AuctimoTraders.Shared.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace AuctimoTraders.Shared.Helpers
+namespace AuctimoTraders.Helpers
 {
     /// <summary>
     ///     Class that holds extension methods for the Application
@@ -40,6 +39,7 @@ namespace AuctimoTraders.Shared.Helpers
             appUser.FirstName, appUser.LastName, appUser.PhoneNumber,
             appUser.Gender,
             appUser.DOB, appUser.Weight, appUser.Salary, appUser.JoiningDay, appUser.JoiningMonth,
-            appUser.JoiningYear, appUser.CreatedAt, appUser.DeletedAt, appUser.UpdatedAt, appUser.JoiningQuarter, appUser.Serial);
+            appUser.JoiningYear, appUser.CreatedAt, appUser.DeletedAt, appUser.UpdatedAt, appUser.JoiningQuarter, 
+            appUser.Serial, appUser.JoiningMonthName);
     }
 }

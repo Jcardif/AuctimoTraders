@@ -47,6 +47,7 @@ namespace AuctimoTraders.Services
                 Salary = user.Salary,
                 JoiningDay = user.JoiningDay,
                 JoiningMonth = user.JoiningMonth,
+                JoiningMonthName = user.JoiningMonthName,
                 JoiningYear = user.JoiningYear,
                 UserName = user.Email,
                 Serial = user.Serial

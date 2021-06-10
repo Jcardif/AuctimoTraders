@@ -14,6 +14,7 @@ namespace AuctimoTraders.Models
     /// <inheritdoc cref="IdentityUser" />
     public class AppUser : IdentityUser<Guid>, IBaseModel
     {
+
         public int Serial { get; set; }
 
         /// <summary>
@@ -55,6 +56,11 @@ namespace AuctimoTraders.Models
         ///     Gets or sets the month the user joined the company
         /// </summary>
         public int JoiningMonth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the months the users joined as a string
+        /// </summary>
+        public string JoiningMonthName { get; set; }
 
         /// <summary>
         ///     Gets or sets the day the user joined the company

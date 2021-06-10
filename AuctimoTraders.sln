@@ -7,8 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuctimoTraders", "AuctimoTr
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AuctimoTraders.Shared", "AuctimoTraders.Shared\AuctimoTraders.Shared.shproj", "{CD7FAF2A-BCE1-4567-B6AD-6CCE03796A08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctimoTraders.Seed", "AuctimoTraders.Seed\AuctimoTraders.Seed.csproj", "{99660575-D13C-4AB4-AF1E-D8CF66051D68}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AuctimoTraders.Shared\AuctimoTraders.Shared.projitems*{99660575-d13c-4ab4-af1e-d8cf66051d68}*SharedItemsImports = 5
 		AuctimoTraders.Shared\AuctimoTraders.Shared.projitems*{cd7faf2a-bce1-4567-b6ad-6cce03796a08}*SharedItemsImports = 13
 		AuctimoTraders.Shared\AuctimoTraders.Shared.projitems*{d8c64144-0d4d-4d6d-ad81-f37c749e226c}*SharedItemsImports = 5
 	EndGlobalSection
@@ -21,6 +24,10 @@ Global
 		{D8C64144-0D4D-4D6D-AD81-F37C749E226C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8C64144-0D4D-4D6D-AD81-F37C749E226C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8C64144-0D4D-4D6D-AD81-F37C749E226C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99660575-D13C-4AB4-AF1E-D8CF66051D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99660575-D13C-4AB4-AF1E-D8CF66051D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99660575-D13C-4AB4-AF1E-D8CF66051D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99660575-D13C-4AB4-AF1E-D8CF66051D68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

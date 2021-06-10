@@ -76,13 +76,23 @@ namespace AuctimoTraders.Shared.Models
         /// </summary>
         public Quarter JoiningQuarter { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the months the users joined as a string
+        /// </summary>
+        public string JoiningMonthName { get; set; }
 
 
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
+
+        public UserDTO()
+        {
+           
+        }
 
         public UserDTO(Guid id, string email, string firstName, string lastName, string phoneNumber, Gender gender,
             DateTime dob, double weight, float salary, int joiningDay, int joiningMonth, int joiningYear,
-            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, Quarter joiningQuarter, int serial)
+            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, Quarter joiningQuarter, int serial, 
+            string joiningMonthName)
         {
             Id = id;
             Email = email;
@@ -101,6 +111,7 @@ namespace AuctimoTraders.Shared.Models
             UpdatedAt = updatedAt;
             JoiningQuarter = joiningQuarter;
             Serial = serial;
+            JoiningMonthName = joiningMonthName;
         }
 
         public DateTime UpdatedAt { get; set; }
