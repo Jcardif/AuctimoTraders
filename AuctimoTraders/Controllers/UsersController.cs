@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -78,10 +79,11 @@ namespace AuctimoTraders.Controllers
                     return CreatedAtAction("GetAppUser", new { id = userDTO.Id }, userDTO);
 
                 case UserRole.CountryManager:
+                    Debug.Assert(userDTO.Id != null, "userDTO.Id != null");
                     var country = new Country
                     {
                         CountryName = user.ManagerialRoleAssignment,
-                        CountryManagerId = userDTO.Id
+                        CountryManagerId = userDTO.Id.Value
                     };
                     await _context.Countries.AddAsync(country);
                     await _context.SaveChangesAsync();
@@ -89,9 +91,10 @@ namespace AuctimoTraders.Controllers
 
 
                 case UserRole.RegionalManager:
+                    Debug.Assert(userDTO.Id != null, "userDTO.Id != null");
                     var region = new Region()
                     {
-                        RegionManagerId = userDTO.Id,
+                        RegionManagerId = userDTO.Id.Value,
                         RegionName = user.ManagerialRoleAssignment
                     };
                     await _context.Regions.AddAsync(region);
