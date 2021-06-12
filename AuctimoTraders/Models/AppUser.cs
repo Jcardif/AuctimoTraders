@@ -30,7 +30,7 @@ namespace AuctimoTraders.Models
         /// <summary>
         ///     Gets or Sets the Gender of the User
         /// </summary>
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         /// <summary>
         ///     Gets or Sets the date of birth of the User
@@ -70,7 +70,7 @@ namespace AuctimoTraders.Models
         /// <summary>
         ///     Gets or sets the quarter the user joined the company
         /// </summary>
-        public Quarter JoiningQuarter { get; set; }
+        public string JoiningQuarter { get; set; }
 
         /// <inheritdoc />
         public DateTime CreatedAt { get; set; }

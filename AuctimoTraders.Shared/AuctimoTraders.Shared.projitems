@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\EnumHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\APIResponseMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SaleDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SeedSale.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserDTO.cs" />
   </ItemGroup>

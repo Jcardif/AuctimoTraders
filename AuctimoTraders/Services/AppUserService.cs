@@ -28,11 +28,11 @@ namespace AuctimoTraders.Services
         }
         
         /// <inheritdoc />
-        public async Task<APIResponseMessage> RegisterUserAsync(UserDTO user, UserRole role)
+        public async Task<ApiResponseMessage> RegisterUserAsync(UserDTO user, UserRole role)
         {
             var appUser = await _userManager.FindByEmailAsync(user.Email);
             if (appUser != null)
-                return new APIResponseMessage("Another User is registered with the provided email address", null,
+                return new ApiResponseMessage("Another User is registered with the provided email address", null,
                     HttpStatusCode.Conflict);
 
             appUser = new AppUser
@@ -55,17 +55,17 @@ namespace AuctimoTraders.Services
 
             var result = await _userManager.CreateAsync(appUser);
             if (!result.Succeeded)
-                return new APIResponseMessage("Unable to create user", result.Errors.ToErrorStrings(),
+                return new ApiResponseMessage("Unable to create user", result.Errors.ToErrorStrings(),
                     HttpStatusCode.BadRequest);
 
             await _roleService.CreateRolesAsync();
             result = await _userManager.AddToRoleAsync(appUser, Enum.GetName(typeof(UserRole), role));
 
             if (!result.Succeeded)
-                return new APIResponseMessage("Unable to add user to specified role", result.Errors.ToErrorStrings(),
+                return new ApiResponseMessage("Unable to add user to specified role", result.Errors.ToErrorStrings(),
                     HttpStatusCode.BadRequest);
 
-            return new APIResponseMessage("Successfully created user", null, HttpStatusCode.Created, appUser.ToUserDTO());
+            return new ApiResponseMessage("Successfully created user", null, HttpStatusCode.Created, appUser.ToUserDTO());
         }
     }
 }

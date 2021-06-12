@@ -90,6 +90,32 @@
         <member name="P:AuctimoTraders.Helpers.BaseModel.DeletedAt">
             <inheritdoc />
         </member>
+        <member name="T:AuctimoTraders.Helpers.Extensions">
+            <summary>
+                Class that holds extension methods for the Application
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Helpers.Extensions.GetUtcDateTime(System.DateTime)">
+            <summary>
+                Convert the provided date to UTC <see cref="T:System.DateTime"/>
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AuctimoTraders.Helpers.Extensions.ToErrorStrings(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IdentityError})">
+            <summary>
+                Convert a list of <see cref="T:Microsoft.AspNetCore.Identity.IdentityError"/> to a string of the error code and error description
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AuctimoTraders.Helpers.Extensions.ToUserDTO(AuctimoTraders.Models.AppUser)">
+            <summary>
+                Create a <see cref="T:AuctimoTraders.Shared.Models.UserDTO"/> object from an <see cref="T:AuctimoTraders.Models.AppUser"/> object
+            </summary>
+            <param name="appUser"></param>
+            <returns></returns>
+        </member>
         <member name="T:AuctimoTraders.Interfaces.IAppRoleService">
             <summary>
                 Interface contains tasks to handle different Role operations
@@ -193,6 +219,11 @@
         <member name="P:AuctimoTraders.Models.AppUser.JoiningMonth">
             <summary>
                 Gets or sets the month the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Models.AppUser.JoiningMonthName">
+            <summary>
+                Gets or sets the months the users joined as a string
             </summary>
         </member>
         <member name="P:AuctimoTraders.Models.AppUser.JoiningDay">
@@ -341,31 +372,50 @@
         <member name="M:AuctimoTraders.Services.AppUserService.RegisterUserAsync(AuctimoTraders.Shared.Models.UserDTO,AuctimoTraders.Shared.Helpers.UserRole)">
             <inheritdoc />
         </member>
-        <member name="T:AuctimoTraders.Shared.Helpers.Extensions">
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.ItemTypeId">
             <summary>
-                Class that holds extension methods for the Application
+                Gets or set the ItemTypeId which is a foreign key
             </summary>
         </member>
-        <member name="M:AuctimoTraders.Shared.Helpers.Extensions.GetUtcDateTime(System.DateTime)">
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.CountryId">
             <summary>
-                Convert the provided date to UTC <see cref="T:System.DateTime"/>
+                Gets or set the CountryId which is a foreign key
             </summary>
-            <param name="date"></param>
-            <returns></returns>
         </member>
-        <member name="M:AuctimoTraders.Shared.Helpers.Extensions.ToErrorStrings(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IdentityError})">
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.SalesChannel">
             <summary>
-                Convert a list of <see cref="T:Microsoft.AspNetCore.Identity.IdentityError"/> to a string of the error code and error description
+                Gets or sets the sales channel of the sale
             </summary>
-            <param name="source"></param>
-            <returns></returns>
         </member>
-        <member name="M:AuctimoTraders.Shared.Helpers.Extensions.ToUserDTO(AuctimoTraders.Models.AppUser)">
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.OrderDate">
             <summary>
-                Create a <see cref="T:AuctimoTraders.Shared.Models.UserDTO"/> object from an <see cref="T:AuctimoTraders.Models.AppUser"/> object
+                Gets or sets the date when the order was placed
             </summary>
-            <param name="appUser"></param>
-            <returns></returns>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.OrderId">
+            <summary>
+                Unique Identifier of the Order
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.ShipDate">
+            <summary>
+                Gets or sets the date when the order is shipped
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.UnitsSold">
+            <summary>
+                Gets or Sets the number of units sold in this particular sale
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.UnitCost">
+            <summary>
+                Gets or Sets the cost at which each unit was sold
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.SaleDTO.SalesPersonId">
+            <summary>
+                Gets or sets the Id of the salesman who executed the sale
+            </summary>
         </member>
         <member name="T:AuctimoTraders.Shared.Models.UserDTO">
             <summary>
@@ -430,6 +480,11 @@
         <member name="P:AuctimoTraders.Shared.Models.UserDTO.JoiningQuarter">
             <summary>
                 Gets or sets the quarter the user joined the company
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Shared.Models.UserDTO.JoiningMonthName">
+            <summary>
+                Gets or sets the months the users joined as a string
             </summary>
         </member>
     </members>

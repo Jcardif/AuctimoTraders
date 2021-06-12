@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctimoTraders.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210610100106_Init")]
+    [Migration("20210611050016_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,7 +55,7 @@ namespace AuctimoTraders.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AppRoles", "Security");
+                    b.ToTable("AppRoles", "dbo");
                 });
 
             modelBuilder.Entity("AuctimoTraders.Models.AppUser", b =>
@@ -99,6 +99,9 @@ namespace AuctimoTraders.Migrations
                     b.Property<int>("JoiningMonth")
                         .HasColumnType("int");
 
+                    b.Property<string>("JoiningMonthName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("JoiningQuarter")
                         .HasColumnType("int");
 
@@ -137,6 +140,9 @@ namespace AuctimoTraders.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Serial")
+                        .HasColumnType("int");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -160,7 +166,7 @@ namespace AuctimoTraders.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AppUsers", "Security");
+                    b.ToTable("AppUsers", "dbo");
                 });
 
             modelBuilder.Entity("AuctimoTraders.Models.Country", b =>
@@ -276,6 +282,9 @@ namespace AuctimoTraders.Migrations
                     b.Property<string>("OrderId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("OrderPriority")
+                        .HasColumnType("int");
+
                     b.Property<int>("SalesChannel")
                         .HasColumnType("int");
 
@@ -325,7 +334,7 @@ namespace AuctimoTraders.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClaims", "Security");
+                    b.ToTable("RoleClaims", "dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
@@ -348,7 +357,7 @@ namespace AuctimoTraders.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserClaims", "Security");
+                    b.ToTable("UserClaims", "dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
@@ -369,7 +378,7 @@ namespace AuctimoTraders.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserLogins", "Security");
+                    b.ToTable("UserLogins", "dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -384,7 +393,7 @@ namespace AuctimoTraders.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles", "Security");
+                    b.ToTable("UserRoles", "dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -403,7 +412,7 @@ namespace AuctimoTraders.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UserTokens", "Security");
+                    b.ToTable("UserTokens", "dbo");
                 });
 
             modelBuilder.Entity("AuctimoTraders.Models.Country", b =>

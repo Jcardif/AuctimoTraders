@@ -58,13 +58,13 @@ namespace AuctimoTraders.Controllers
         {
             if (string.IsNullOrEmpty(user.ManagerialRoleAssignment) && role is UserRole.CountryManager)
             {
-                return BadRequest(new APIResponseMessage("Provide the Managerial region assigned", null,
+                return BadRequest(new ApiResponseMessage("Provide the Managerial region assigned", null,
                     HttpStatusCode.BadRequest));
             }
 
             if (string.IsNullOrEmpty(user.ManagerialRoleAssignment) && role is UserRole.RegionalManager)
             {
-                return BadRequest(new APIResponseMessage("Provide the Managerial Country assigned", null,
+                return BadRequest(new ApiResponseMessage("Provide the Managerial Country assigned", null,
                     HttpStatusCode.BadRequest));
             }
 

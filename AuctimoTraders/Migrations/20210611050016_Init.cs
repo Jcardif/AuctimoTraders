@@ -8,11 +8,11 @@ namespace AuctimoTraders.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "Security");
+                name: "dbo");
 
             migrationBuilder.CreateTable(
                 name: "AppRoles",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -30,10 +30,11 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AppUsers",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Serial = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
@@ -42,6 +43,7 @@ namespace AuctimoTraders.Migrations
                     Salary = table.Column<float>(type: "real", nullable: false),
                     JoiningYear = table.Column<int>(type: "int", nullable: false),
                     JoiningMonth = table.Column<int>(type: "int", nullable: false),
+                    JoiningMonthName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JoiningDay = table.Column<int>(type: "int", nullable: false),
                     JoiningQuarter = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -85,7 +87,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateTable(
                 name: "RoleClaims",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -100,7 +102,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_RoleClaims_AppRoles_RoleId",
                         column: x => x.RoleId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -123,7 +125,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_Regions_AppUsers_RegionManagerId",
                         column: x => x.RegionManagerId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -131,7 +133,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserClaims",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -146,7 +148,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_UserClaims_AppUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -154,7 +156,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserLogins",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -168,7 +170,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_UserLogins_AppUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -176,7 +178,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserRoles",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -188,14 +190,14 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_UserRoles_AppRoles_RoleId",
                         column: x => x.RoleId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserRoles_AppUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -203,7 +205,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserTokens",
-                schema: "Security",
+                schema: "dbo",
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -217,7 +219,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_UserTokens_AppUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -241,7 +243,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_Countries_AppUsers_CountryManagerId",
                         column: x => x.CountryManagerId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -266,6 +268,7 @@ namespace AuctimoTraders.Migrations
                     ShipDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UnitsSold = table.Column<int>(type: "int", nullable: false),
                     UnitCost = table.Column<float>(type: "real", nullable: false),
+                    OrderPriority = table.Column<int>(type: "int", nullable: false),
                     SalesPersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -277,7 +280,7 @@ namespace AuctimoTraders.Migrations
                     table.ForeignKey(
                         name: "FK_Sales_AppUsers_SalesPersonId",
                         column: x => x.SalesPersonId,
-                        principalSchema: "Security",
+                        principalSchema: "dbo",
                         principalTable: "AppUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -297,7 +300,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
-                schema: "Security",
+                schema: "dbo",
                 table: "AppRoles",
                 column: "NormalizedName",
                 unique: true,
@@ -305,13 +308,13 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                schema: "Security",
+                schema: "dbo",
                 table: "AppUsers",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                schema: "Security",
+                schema: "dbo",
                 table: "AppUsers",
                 column: "NormalizedUserName",
                 unique: true,
@@ -336,7 +339,7 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
-                schema: "Security",
+                schema: "dbo",
                 table: "RoleClaims",
                 column: "RoleId");
 
@@ -357,19 +360,19 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
-                schema: "Security",
+                schema: "dbo",
                 table: "UserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserLogins_UserId",
-                schema: "Security",
+                schema: "dbo",
                 table: "UserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",
-                schema: "Security",
+                schema: "dbo",
                 table: "UserRoles",
                 column: "RoleId");
         }
@@ -378,26 +381,26 @@ namespace AuctimoTraders.Migrations
         {
             migrationBuilder.DropTable(
                 name: "RoleClaims",
-                schema: "Security");
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "Sales");
 
             migrationBuilder.DropTable(
                 name: "UserClaims",
-                schema: "Security");
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "UserLogins",
-                schema: "Security");
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "UserRoles",
-                schema: "Security");
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "UserTokens",
-                schema: "Security");
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "Countries");
@@ -407,14 +410,14 @@ namespace AuctimoTraders.Migrations
 
             migrationBuilder.DropTable(
                 name: "AppRoles",
-                schema: "Security");
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "Regions");
 
             migrationBuilder.DropTable(
                 name: "AppUsers",
-                schema: "Security");
+                schema: "dbo");
         }
     }
 }

@@ -42,7 +42,7 @@ namespace AuctimoTraders
             services.AddDbContext<AppDbContext>(options =>
             {
                 //options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection"));
-                options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("AuctimoTradersDbConnection"));
             });
 
             services.AddIdentity<AppUser, AppRole>(options =>

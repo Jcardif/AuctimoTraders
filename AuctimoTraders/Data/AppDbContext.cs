@@ -50,20 +50,22 @@ namespace AuctimoTraders.Data
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
-            builder.Entity<AppUser>(entity => { entity.ToTable("AppUsers", "Security"); });
 
-            builder.Entity<AppRole>(entity => { entity.ToTable("AppRoles", "Security"); });
+            // TODO : 
+            builder.Entity<AppUser>(entity => { entity.ToTable("AppUsers", "dbo"); });
 
-            builder.Entity<IdentityUserClaim<Guid>>(entity => { entity.ToTable("UserClaims", "Security"); });
+            builder.Entity<AppRole>(entity => { entity.ToTable("AppRoles", "dbo"); });
 
-            builder.Entity<IdentityUserLogin<Guid>>(entity => { entity.ToTable("UserLogins", "Security"); });
+            builder.Entity<IdentityUserClaim<Guid>>(entity => { entity.ToTable("UserClaims", "dbo"); });
 
-            builder.Entity<IdentityRoleClaim<Guid>>(entity => { entity.ToTable("RoleClaims", "Security"); });
+            builder.Entity<IdentityUserLogin<Guid>>(entity => { entity.ToTable("UserLogins", "dbo"); });
 
-            builder.Entity<IdentityUserRole<Guid>>(entity => { entity.ToTable("UserRoles", "Security"); });
+            builder.Entity<IdentityRoleClaim<Guid>>(entity => { entity.ToTable("RoleClaims", "dbo"); });
+
+            builder.Entity<IdentityUserRole<Guid>>(entity => { entity.ToTable("UserRoles", "dbo"); });
 
 
-            builder.Entity<IdentityUserToken<Guid>>(entity => { entity.ToTable("UserTokens", "Security"); });
+            builder.Entity<IdentityUserToken<Guid>>(entity => { entity.ToTable("UserTokens", "dbo"); });
         }
     }
 }

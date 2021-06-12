@@ -18,6 +18,6 @@ namespace AuctimoTraders.Interfaces
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        Task<APIResponseMessage> RegisterUserAsync(UserDTO user, UserRole role);
+        Task<ApiResponseMessage> RegisterUserAsync(UserDTO user, UserRole role);
     }
 }

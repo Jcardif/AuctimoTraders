@@ -9,8 +9,8 @@ namespace AuctimoTraders.Shared.Models
         public string Country { get; set; }
         public string Region { get; set; }
         public string ItemType { get; set; }
-        public SalesChannel SalesChannel { get; set; }
-        public OrderPriority OrderPriority { get; set; }
+        public string SalesChannel { get; set; }
+        public string OrderPriority { get; set; }
         public DateTime OrderDate { get; set; }
         public string OrderId { get; set; }
         public DateTime ShipDate { get; set; }

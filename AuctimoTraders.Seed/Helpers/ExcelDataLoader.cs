@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using AuctimoTraders.Shared.Helpers;
 using AuctimoTraders.Shared.Models;
 using Syncfusion.XlsIO;
 
-namespace AuctimoTraders.Seed
+namespace AuctimoTraders.Seed.Helpers
 {
     public static class ExcelDataLoader
     {
@@ -76,10 +75,8 @@ namespace AuctimoTraders.Seed
                     Region = salesWorkSheet[row, 1].DisplayText.Trim(),
                     Country = salesWorkSheet[row, 2].DisplayText.Trim(),
                     ItemType = salesWorkSheet[row, 3].DisplayText.Trim(),
-                    SalesChannel =
-                        (SalesChannel) Enum.Parse(typeof(SalesChannel), salesWorkSheet[row, 4].DisplayText.Trim()),
-                    OrderPriority = (OrderPriority) Enum.Parse(typeof(OrderPriority),
-                        salesWorkSheet[row, 5].DisplayText.Trim()),
+                    SalesChannel = salesWorkSheet[row, 4].DisplayText.Trim(),
+                    OrderPriority = salesWorkSheet[row, 5].DisplayText.Trim(),
                     OrderDate = DateTime.Parse(salesWorkSheet[row, 6].DisplayText.Trim().ToUpper()),
                     OrderId = salesWorkSheet[row, 7].DisplayText.Trim(),
                     ShipDate = DateTime.Parse(salesWorkSheet[row, 8].DisplayText.Trim()),
@@ -114,11 +111,11 @@ namespace AuctimoTraders.Seed
                 {
                     FirstName = usersWorksheet[row, 1].DisplayText.Trim(),
                     LastName = usersWorksheet[row, 2].DisplayText.Trim(),
-                    Gender = (Gender) Enum.Parse(typeof(Gender), usersWorksheet[row, 3].DisplayText.Trim()),
+                    Gender =  usersWorksheet[row, 3].DisplayText.Trim(),
                     Email = usersWorksheet[row, 4].DisplayText.Trim(),
                     DOB = DateTime.Parse(usersWorksheet[row, 5].DisplayText.Trim()),
                     Weight = double.Parse(usersWorksheet[row, 6].DisplayText.Trim().ToUpper()),
-                    JoiningQuarter = (Quarter) Enum.Parse(typeof(Quarter), usersWorksheet[row, 7].DisplayText.Trim()),
+                    JoiningQuarter = usersWorksheet[row, 7].DisplayText.Trim(),
                     JoiningYear = Convert.ToInt32(usersWorksheet[row, 8].DisplayText.Trim()),
                     JoiningMonth = Convert.ToInt32(usersWorksheet[row, 9].DisplayText.Trim()),
                     JoiningMonthName = usersWorksheet[row, 10].DisplayText.Trim(),

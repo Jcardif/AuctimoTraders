@@ -39,7 +39,7 @@ namespace AuctimoTraders.Shared.Models
         /// <summary>
         ///     Gets or Sets the Gender of the User
         /// </summary>
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         /// <summary>
         ///     Gets or Sets the date of birth of the User
@@ -74,7 +74,7 @@ namespace AuctimoTraders.Shared.Models
         /// <summary>
         ///     Gets or sets the quarter the user joined the company
         /// </summary>
-        public Quarter JoiningQuarter { get; set; }
+        public string JoiningQuarter { get; set; }
 
         /// <summary>
         ///     Gets or sets the months the users joined as a string
@@ -89,9 +89,9 @@ namespace AuctimoTraders.Shared.Models
            
         }
 
-        public UserDTO(Guid id, string email, string firstName, string lastName, string phoneNumber, Gender gender,
+        public UserDTO(Guid id, string email, string firstName, string lastName, string phoneNumber, string gender,
             DateTime dob, double weight, float salary, int joiningDay, int joiningMonth, int joiningYear,
-            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, Quarter joiningQuarter, int serial, 
+            DateTime createdAt, DateTime? deletedAt, DateTime updatedAt, string joiningQuarter, int serial, 
             string joiningMonthName)
         {
             Id = id;

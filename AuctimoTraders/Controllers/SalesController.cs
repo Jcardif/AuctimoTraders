@@ -15,28 +15,31 @@ namespace AuctimoTraders.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SeedController : ControllerBase
+    public class SalesController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public SeedController(AppDbContext context)
+        public SalesController(AppDbContext context)
         {
             _context = context;
         }
 
-
-
-        [HttpPost("sale")]
+        [HttpPost]
         public async Task<ActionResult> SeedSalesAsync([FromBody] SeedSale seedSale)
         {
+            var sale = await _context.Sales.FirstOrDefaultAsync(s => s.OrderId == seedSale.OrderId);
+            if (sale != null)
+                return Conflict(new ApiResponseMessage("Another sale is registered with the provided orderId", null,
+                    HttpStatusCode.Conflict));
+
             var region = await _context.Regions.FirstOrDefaultAsync(r => r.RegionName == seedSale.Region);
             if (region is null)
-                return NotFound(new APIResponseMessage("No region was found with the provided name", null,
+                return NotFound(new ApiResponseMessage("No region was found with the provided name", null,
                     HttpStatusCode.NotFound));
 
             var country = await _context.Countries.FirstOrDefaultAsync(c => c.CountryName == seedSale.Country);
             if (country is null)
-                return NotFound(new APIResponseMessage("No country was found with the provided name", null,
+                return NotFound(new ApiResponseMessage("No country was found with the provided name", null,
                     HttpStatusCode.NotFound));
 
             if (country.RegionId is null)
@@ -59,7 +62,7 @@ namespace AuctimoTraders.Controllers
             }
 
             var salesPerson = await _context.Users.FirstOrDefaultAsync(u => u.Serial == seedSale.Serial);
-            var sale = new Sale
+            sale = new Sale
             {
                 SalesPersonId = salesPerson.Id,
                 ItemTypeId = itemType.Id,
@@ -76,7 +79,7 @@ namespace AuctimoTraders.Controllers
             await _context.Sales.AddAsync(sale);
             await _context.SaveChangesAsync();
 
-            return StatusCode(201, new APIResponseMessage("Created successfully", null, HttpStatusCode.Created, sale));
+            return StatusCode(201, sale);
         }
     }
 }

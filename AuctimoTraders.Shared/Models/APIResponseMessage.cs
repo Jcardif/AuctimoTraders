@@ -5,7 +5,7 @@ namespace AuctimoTraders.Helpers
     /// <summary>
     ///     Default API response model for a request made to the api
     /// </summary>
-    public class APIResponseMessage
+    public class ApiResponseMessage
     {
         /// <summary>
         ///     Constructor
@@ -13,7 +13,7 @@ namespace AuctimoTraders.Helpers
         /// <param name="message"></param>
         /// <param name="errors"></param>
         /// <param name="statusCode"></param>
-        public APIResponseMessage(string message, string[] errors, HttpStatusCode statusCode, object result=null)
+        public ApiResponseMessage(string message, string[] errors, HttpStatusCode statusCode, object result=null)
         {
             Message = message;
             Errors = errors;
