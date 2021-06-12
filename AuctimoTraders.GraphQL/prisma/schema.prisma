@@ -1,0 +1,188 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["microsoftSqlServer"]
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model EFMigrationsHistory {
+  MigrationId    String @id @db.NVarChar(150)
+  ProductVersion String @db.NVarChar(32)
+
+  @@map("__EFMigrationsHistory")
+}
+
+model AppRoles {
+  Id         String       @id @db.UniqueIdentifier
+  CreatedAt  DateTime     @default(now())
+  UpdatedAt  DateTime     @updatedAt
+  DeletedAt  DateTime?
+  Name       String?      @db.NVarChar(256)
+  // NormalizedName   String?      @db.NVarChar(256) @ignore
+  // ConcurrencyStamp String?      @db.NVarChar(Max) @ignore
+  // RoleClaims RoleClaims[]
+  UserRoles  UserRoles[]
+  RoleClaims RoleClaims[]
+}
+
+model AppUsers {
+  Id               String      @id @db.UniqueIdentifier
+  Serial           Int
+  FirstName        String?     @db.NVarChar(Max)
+  LastName         String?     @db.NVarChar(Max)
+  Gender           Int
+  DOB              DateTime
+  Weight           Float
+  Salary           Float       @db.Real
+  JoiningYear      Int
+  JoiningMonth     Int
+  JoiningMonthName String?     @db.NVarChar(Max)
+  JoiningDay       Int
+  JoiningQuarter   Int
+  CreatedAt        DateTime    @default(now())
+  UpdatedAt        DateTime    @updatedAt
+  DeletedAt        DateTime?
+  // UserName             String?      @db.NVarChar(256) @ignore
+  // NormalizedUserName   String?      @db.NVarChar(256) @ignore
+  Email            String?     @db.NVarChar(256)
+  // NormalizedEmail      String?      @db.NVarChar(256) @ignore
+  // EmailConfirmed   Boolean     @ignore
+  // PasswordHash         String?      @db.NVarChar(Max) @ignore
+  // SecurityStamp        String?      @db.NVarChar(Max) @ignore
+  // ConcurrencyStamp     String?      @db.NVarChar(Max) @ignore
+  PhoneNumber      String?     @db.NVarChar(Max)
+  // PhoneNumberConfirmed Boolean      @ignore
+  // TwoFactorEnabled     Boolean      @ignore
+  // LockoutEnd           DateTime?    @db.DateTimeOffset @ignore
+  // LockoutEnabled       Boolean      @ignore
+  // AccessFailedCount    Int          @ignore
+  Countries        Countries?
+  Regions          Regions?
+  Sales            Sales[]
+  // UserClaims           UserClaims[] @ignore
+  // UserLogins           UserLogins[] @ignore
+  UserRoles        UserRoles[]
+  // UserTokens           UserTokens[] @ignore
+
+  UserClaims UserClaims[]
+  UserLogins UserLogins[]
+  UserTokens UserTokens[]
+}
+
+model Countries {
+  Id               String    @id @db.UniqueIdentifier
+  CountryName      String?   @db.NVarChar(Max)
+  CountryManagerId String    @unique @db.UniqueIdentifier
+  RegionId         String?   @db.UniqueIdentifier
+  CreatedAt        DateTime  @default(now())
+  UpdatedAt        DateTime  @updatedAt
+  DeletedAt        DateTime?
+  AppUsers         AppUsers  @relation(fields: [CountryManagerId], references: [Id])
+  Regions          Regions?  @relation(fields: [RegionId], references: [Id])
+  Sales            Sales[]
+
+  @@index([RegionId], name: "IX_Countries_RegionId")
+}
+
+model ItemTypes {
+  Id        String    @id @db.UniqueIdentifier
+  Name      String?   @db.NVarChar(Max)
+  UnitPrice Float     @db.Real
+  CreatedAt DateTime  @default(now())
+  UpdatedAt DateTime  @updatedAt
+  DeletedAt DateTime?
+  Sales     Sales[]
+}
+
+model Regions {
+  Id              String      @id @db.UniqueIdentifier
+  RegionName      String?     @db.NVarChar(Max)
+  RegionManagerId String      @unique @db.UniqueIdentifier
+  CreatedAt       DateTime    @default(now())
+  UpdatedAt       DateTime    @updatedAt
+  DeletedAt       DateTime?
+  AppUsers        AppUsers    @relation(fields: [RegionManagerId], references: [Id])
+  Countries       Countries[]
+}
+
+model RoleClaims {
+  Id         Int      @id @default(autoincrement())
+  RoleId     String   @db.UniqueIdentifier
+  ClaimType  String?  @db.NVarChar(Max)
+  ClaimValue String?  @db.NVarChar(Max)
+  AppRoles   AppRoles @relation(fields: [RoleId], references: [Id])
+
+  @@index([RoleId], name: "IX_RoleClaims_RoleId")
+}
+
+model Sales {
+  Id            String     @id @db.UniqueIdentifier
+  ItemTypeId    String     @db.UniqueIdentifier
+  CountryId     String?    @db.UniqueIdentifier
+  SalesChannel  Int
+  OrderDate     DateTime
+  OrderId       String?    @db.NVarChar(Max)
+  ShipDate      DateTime
+  UnitsSold     Int
+  UnitCost      Float      @db.Real
+  OrderPriority Int
+  SalesPersonId String     @db.UniqueIdentifier
+  CreatedAt     DateTime   @default(now())
+  UpdatedAt     DateTime   @updatedAt
+  DeletedAt     DateTime?
+  Countries     Countries? @relation(fields: [CountryId], references: [Id])
+  ItemTypes     ItemTypes  @relation(fields: [ItemTypeId], references: [Id])
+  AppUsers      AppUsers   @relation(fields: [SalesPersonId], references: [Id])
+
+  @@index([CountryId], name: "IX_Sales_CountryId")
+  @@index([ItemTypeId], name: "IX_Sales_ItemTypeId")
+  @@index([SalesPersonId], name: "IX_Sales_SalesPersonId")
+}
+
+model UserClaims {
+  Id         Int      @id @default(autoincrement())
+  UserId     String   @db.UniqueIdentifier
+  ClaimType  String?  @db.NVarChar(Max)
+  ClaimValue String?  @db.NVarChar(Max)
+  AppUsers   AppUsers @relation(fields: [UserId], references: [Id])
+
+  @@index([UserId], name: "IX_UserClaims_UserId")
+}
+
+model UserLogins {
+  LoginProvider       String   @db.NVarChar(450)
+  ProviderKey         String   @db.NVarChar(450)
+  ProviderDisplayName String?  @db.NVarChar(Max)
+  UserId              String   @db.UniqueIdentifier
+  AppUsers            AppUsers @relation(fields: [UserId], references: [Id])
+
+  @@id([LoginProvider, ProviderKey])
+  @@index([UserId], name: "IX_UserLogins_UserId")
+}
+
+model UserRoles {
+  UserId   String   @db.UniqueIdentifier
+  RoleId   String   @db.UniqueIdentifier
+  AppRoles AppRoles @relation(fields: [RoleId], references: [Id])
+  AppUsers AppUsers @relation(fields: [UserId], references: [Id])
+
+  @@id([UserId, RoleId])
+  @@index([RoleId], name: "IX_UserRoles_RoleId")
+}
+
+model UserTokens {
+  UserId        String   @db.UniqueIdentifier
+  LoginProvider String   @db.NVarChar(450)
+  Name          String   @db.NVarChar(450)
+  Value         String?  @db.NVarChar(Max)
+  AppUsers      AppUsers @relation(fields: [UserId], references: [Id])
+
+  @@id([UserId, LoginProvider, Name])
+}
