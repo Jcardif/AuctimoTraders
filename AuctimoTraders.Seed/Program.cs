@@ -33,12 +33,14 @@ namespace AuctimoTraders.Seed
             var sales = ExcelDataLoader.LoadSales(inputStream);
             await inputStream.DisposeAsync();
 
+            
+
             Console.WriteLine($"Sales Persons : {salesPersons.Count}");
             Console.WriteLine($"Country Managers : {countryManagers.Count}");
             Console.WriteLine($"Regional Managers : {regionalManagers.Count}");
             Console.WriteLine($"Sales : {sales.Count}");
 
-            var httpDataService = new HttpDataService("https://localhost:5001/api");
+            var httpDataService = new HttpDataService("https://auctimotraders.azurewebsites.net/api");
             foreach (var regionalManager in regionalManagers)
             {
                 var res = await httpDataService.PostAsJsonAsync($"users/{UserRole.RegionalManager}",
@@ -84,7 +86,7 @@ namespace AuctimoTraders.Seed
 
             foreach (var sale in sales)
             {
-                var res=await httpDataService.PostAsJsonAsync($"Sales", sale);
+                var res=await httpDataService.PostAsJsonAsync($"Sales/seed", sale);
                 if (res is SaleDTO saleDTO)
                     Console.WriteLine($"{sales.IndexOf(sale)}. {saleDTO.Id}\t{saleDTO.UnitCost}\t{saleDTO.UnitsSold}");
             }

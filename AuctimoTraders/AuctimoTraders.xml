@@ -38,39 +38,6 @@
         <member name="M:AuctimoTraders.Data.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:AuctimoTraders.Helpers.APIResponseMessage">
-            <summary>
-                Default API response model for a request made to the api
-            </summary>
-        </member>
-        <member name="M:AuctimoTraders.Helpers.APIResponseMessage.#ctor(System.String,System.String[],System.Net.HttpStatusCode,System.Object)">
-            <summary>
-                Constructor
-            </summary>
-            <param name="message"></param>
-            <param name="errors"></param>
-            <param name="statusCode"></param>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.Message">
-            <summary>
-                Response message
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.Errors">
-            <summary>
-                Errors that occurred when executing the response
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.StatusCode">
-            <summary>
-                <see cref="T:System.Net.HttpStatusCode"/>
-            </summary>
-        </member>
-        <member name="P:AuctimoTraders.Helpers.APIResponseMessage.Result">
-            <summary>
-                Result returned for the query
-            </summary>
-        </member>
         <member name="T:AuctimoTraders.Helpers.BaseModel">
             <inheritdoc />
         </member>
@@ -115,6 +82,39 @@
             </summary>
             <param name="appUser"></param>
             <returns></returns>
+        </member>
+        <member name="T:AuctimoTraders.Helpers.ApiResponseMessage">
+            <summary>
+                Default API response model for a request made to the api
+            </summary>
+        </member>
+        <member name="M:AuctimoTraders.Helpers.ApiResponseMessage.#ctor(System.String,System.String[],System.Net.HttpStatusCode,System.Object)">
+            <summary>
+                Constructor
+            </summary>
+            <param name="message"></param>
+            <param name="errors"></param>
+            <param name="statusCode"></param>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.ApiResponseMessage.Message">
+            <summary>
+                Response message
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.ApiResponseMessage.Errors">
+            <summary>
+                Errors that occurred when executing the response
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.ApiResponseMessage.StatusCode">
+            <summary>
+                <see cref="T:System.Net.HttpStatusCode"/>
+            </summary>
+        </member>
+        <member name="P:AuctimoTraders.Helpers.ApiResponseMessage.Result">
+            <summary>
+                Result returned for the query
+            </summary>
         </member>
         <member name="T:AuctimoTraders.Interfaces.IAppRoleService">
             <summary>

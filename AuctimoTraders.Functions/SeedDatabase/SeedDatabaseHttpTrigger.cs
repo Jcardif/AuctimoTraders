@@ -31,9 +31,7 @@ namespace AuctimoTraders.Functions.SeedDatabase
 
             var connectionString = configuration["AzureWebJobsStorage"];
             var containerName = "seed";
-            var endpoint = "https://adrianfiber.projects.legytt.com";
-            //var endpoint = "https://localhost:5001";
-
+          
             var blobServiceClient = new BlobServiceClient(connectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
             await containerClient.CreateIfNotExistsAsync();
@@ -66,7 +64,7 @@ namespace AuctimoTraders.Functions.SeedDatabase
                                       $"{countryManagers.Count} country managers" +
                                       $"and {sales.Count} sales");
 
-                var baseUrl = "https://auctimotradersapi.azurewebsites.net/api";
+                var baseUrl = "https://auctimotraders.azurewebsites.net/api";
                 await SeedDatabase.Seed(regionalManagers, countryManagers, salesPersons, sales, logger, baseUrl);
 
                 return ReturnResponse("File found", req, HttpStatusCode.OK);

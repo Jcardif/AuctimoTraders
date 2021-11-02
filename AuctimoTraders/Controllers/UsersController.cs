@@ -11,7 +11,6 @@ using AuctimoTraders.Data;
 using AuctimoTraders.Helpers;
 using AuctimoTraders.Interfaces;
 using AuctimoTraders.Models;
-using AuctimoTraders.Services;
 using AuctimoTraders.Shared.Helpers;
 using AuctimoTraders.Shared.Models;
 
@@ -32,14 +31,14 @@ namespace AuctimoTraders.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-            return await _context.Users.Select(u => u.ToUserDTO()).ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDTO>> GetAppUser(Guid id)
+        public async Task<ActionResult<AppUser>> GetAppUser(Guid id)
         {
             var appUser = await _context.Users.FindAsync(id);
 
@@ -48,9 +47,50 @@ namespace AuctimoTraders.Controllers
                 return NotFound();
             }
 
-            return appUser.ToUserDTO();
+            return appUser;
         }
 
+        // PUT: api/Users/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAppUser(Guid id, AppUser appUser)
+        {
+            if (id != appUser.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(appUser).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AppUserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<AppUser>> PostAppUser(AppUser appUser)
+        {
+            _context.Users.Add(appUser);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetAppUser", new { id = appUser.Id }, appUser);
+        }
 
         // POST: api/Users
         [HttpPost("{role}")]
@@ -69,9 +109,9 @@ namespace AuctimoTraders.Controllers
             }
 
             var res = await _userService.RegisterUserAsync(user, role);
-            if(res.StatusCode!=HttpStatusCode.Created)
+            if (res.StatusCode != HttpStatusCode.Created)
                 return StatusCode((int)res.StatusCode, res);
-            var userDTO = (UserDTO) res.Result;
+            var userDTO = (UserDTO)res.Result;
 
             switch (role)
             {
@@ -106,6 +146,21 @@ namespace AuctimoTraders.Controllers
             }
         }
 
+        // DELETE: api/Users/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAppUser(Guid id)
+        {
+            var appUser = await _context.Users.FindAsync(id);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            _context.Users.Remove(appUser);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
         private bool AppUserExists(Guid id)
         {
